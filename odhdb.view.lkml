@@ -460,6 +460,7 @@ view: odhdb {
   dimension: ship_to_country {
     type: string
     sql: ${TABLE}.ship_to_country ;;
+    map_layer_name: countries
   }
 
   dimension: ship_to_mod_flag {
@@ -599,6 +600,11 @@ view: odhdb {
     type: sum
     value_format_name: usd
     sql: ${ips} ;;
+    drill_fields: [details*]
+  }
+
+  set: details {
+    fields: [arch_date,warehouse,total_ips]
   }
 
 }
